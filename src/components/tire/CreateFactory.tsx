@@ -21,8 +21,9 @@ const CreateFactory: React.FC<Props> = () => {
     const router = useRouter();
 
     const [createFactory, { loading, error }] = useMutation<
-         // ^^^^ใช้ Call    ^^^^^^^^^^^^^^^^^^ Result Object
-        { createFactory: Factory },FactoryArgs >(CREATE_FACTORY);
+        { createFactory: Factory },
+        FactoryArgs
+    >(CREATE_FACTORY);
         // < ^^^^^^^^^^^^^^^^^^ > คือ เจนาริค คือจะเป็น ตัว Return createFactory เป็น Factory
 
 
@@ -32,7 +33,10 @@ const CreateFactory: React.FC<Props> = () => {
                 variables: {factoryName,}
             })
             if (response?.data?.createFactory) {
-                console.log(response?.data?.createFactory)
+                console.log('response?.data?.createFactory ===>', response?.data?.createFactory);
+                console.log('response.data ===>', response.data); //FIXME: รอทดสอบ
+                const { createFactory } = response.data;
+                console.log('createFactory ===>', createFactory); //FIXME: รอทดสอบ
             }
 
 
@@ -88,7 +92,7 @@ const CreateFactory: React.FC<Props> = () => {
                         </ErrorMessage>
                     </s.InputContainer>
                     <s.Button
-                        // disabled={loading}
+                        disabled={loading}
                         style={{ cursor: loading ? 'not-allowed' : 'pointer' }}>
                         {loading ? (
                             <Loader
