@@ -149,7 +149,7 @@ const NavBar: React.FC<Props> = () => {
                     <Link href="/products">
                         <a className={router.pathname === '/products' ? 'active' : ''}>Products</a>
                     </Link>
-
+                    {/* ต้อง logged ถึงจะ Show dashboard */}
                     {loggedInUser && (
                         <Link href="/dashboard">
                             <a className={router.pathname === '/dashboard' ? 'active' : ''}>
@@ -157,7 +157,14 @@ const NavBar: React.FC<Props> = () => {
                             </a>
                         </Link>
                     )}
-
+                    {loggedInUser && (
+                        <Link href="/Tier">
+                            <a className={router.pathname === '/Tier' ? 'active' : ''}>
+                            Tier
+                            </a>
+                        </Link>
+                    )}
+                    {/* ต้อง logged และ เป็น Admin ถึงจะ Show '/admin' */}
                     {loggedInUser && isAdmin(loggedInUser) && (
                         <Link href="/admin">
                             <a className={router.pathname === '/admin' ? 'active' : ''}>Admin</a>

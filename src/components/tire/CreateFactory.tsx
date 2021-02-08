@@ -13,7 +13,7 @@ import { Factory, FactoryArgs } from '../../types';
 interface Props {}
 
 const CreateFactory: React.FC<Props> = () => {
-    const { setAuthUser } = useContext(AuthContext);
+    const { handleAuthAction } = useContext(AuthContext);
     const { register, errors, handleSubmit } = useForm<{
         factoryName: string;
     }>();
@@ -32,30 +32,21 @@ const CreateFactory: React.FC<Props> = () => {
             const response = await createFactory({
                 variables: {factoryName,}
             })
+
             if (response?.data?.createFactory) {
-                console.log('response?.data?.createFactory ===>', response?.data?.createFactory);
-                console.log('response.data ===>', response.data); //FIXME: รอทดสอบ
-                const { createFactory } = response.data;
-                console.log('createFactory ===>', createFactory); //FIXME: รอทดสอบ
+                const { createFactory } = response.data; 
+                if (createFactory) {
+
+                    // Close form
+                    handleAuthAction('close')
+
+                    // Push user to their dashboard
+                    router.push('/Tier') //FIXME:
+                }
             }
 
-
-            // if (response?.data?.createFactory) {
-            //     const { createFactory } = response.data
-
-            //     if (createFactory) {
-            //         // Close form
-            //         handleAuthAction('close')
-
-            //         // Set loggedInUser in context api
-            //         //   setAuthUser(createFactory)
-
-            //         // Push user to their dashboard
-            //         router.push('/dashboard')
-            //     }
-            // }
         } catch (error) {
-            // setAuthUser(null)
+            throw error //FIXME:
         }
     }
     );
