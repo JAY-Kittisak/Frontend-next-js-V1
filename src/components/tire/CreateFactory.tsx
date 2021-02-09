@@ -30,28 +30,23 @@ const CreateFactory: React.FC<Props> = () => {
     const submitCreateFactory = handleSubmit(async ({ factoryName }) => {
         try {
             const response = await createFactory({
-                variables: {factoryName,}
-            })
+                variables: { factoryName }
+            });
 
             if (response?.data?.createFactory) {
-                const { createFactory } = response.data; 
+                const { createFactory } = response.data;
                 if (createFactory) {
-
                     // Close form
-                    handleAuthAction('close')
+                    handleAuthAction('close');
 
                     // Push user to their dashboard
-                    router.push('/Tier') //FIXME:
+                    router.push('/Tier'); //FIXME:
                 }
             }
-
         } catch (error) {
-            throw error //FIXME:
+            throw error; //FIXME:
         }
-    }
-    );
-    console.log('loading :', loading)
-    console.log('Error :', error)
+    });
 
     return (
         <Model>
@@ -97,6 +92,7 @@ const CreateFactory: React.FC<Props> = () => {
                             'Submit'
                         )}
                     </s.Button>
+                    {/*  ถ้ามี error ให้แสดง error หรือ Sorry, something went wromg */}
                     {error && (
                         <s.StyledError>
                             {error.graphQLErrors[0]?.message || 'Sorry, something went wrong'}
