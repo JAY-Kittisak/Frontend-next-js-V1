@@ -3,9 +3,11 @@ import { useQuery } from '@apollo/client'
 import Loader from 'react-loader-spinner'
 
 import * as s from './Tier.styles'
+import { QUERY_USERS } from '../../apollo/queries'
+import { User } from '../../types'
 import { isClient } from '../../helpers/authHelpers'
 
-const Admin: React.FC<{ admin: User | null }> = ({ admin }) => {
+const Admin: React.FC<{ client: User | null }> = ({ client }) => {
 
     const { data, loading, error } = useQuery<{ users: User[] }>(QUERY_USERS, {
         fetchPolicy: 'network-only',
@@ -31,7 +33,7 @@ const Admin: React.FC<{ admin: User | null }> = ({ admin }) => {
                 <th rowSpan={2} style={{ width: '15%' }}>
                   Created At
                 </th>
-                {isClient() && (
+                {isClient(client) && (
                   <>
                     <th colSpan={4} style={{ width: '25%' }}>
                       Role
@@ -44,7 +46,7 @@ const Admin: React.FC<{ admin: User | null }> = ({ admin }) => {
               </tr>
     
               {/* Edit Roles Sub Headers */}
-              {isClient() && (
+              {isClient(client) && (
                 <tr>
                   <th>Client</th>
                   <th>Editor</th>
@@ -61,7 +63,7 @@ const Admin: React.FC<{ admin: User | null }> = ({ admin }) => {
                 ))}
             </tbody>
           </s.Table>
-        </หDiv>
+        </s.Div>
       )
     }
     
