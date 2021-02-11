@@ -2,9 +2,10 @@ import { useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Loader from 'react-loader-spinner';
 
+import Tier from '../components/tire/Tier';
 import { AuthContext } from '../context/AuthContextProvider';
 
-export default function Tier() {
+export default function tier() {
     const { loggedInUser } = useContext(AuthContext);
     // ดึง    ^^loggedInUser จาก AuthContext^^^^^^
     const router = useRouter();
@@ -19,6 +20,8 @@ export default function Tier() {
     return !loggedInUser ? (
         <Loader type="Oval" color="teal" height={30} width={30} timeout={30000} />
     ) : (
-        <h2>Tier</h2>
+        <h2>
+            <Tier admin={loggedInUser} />
+        </h2>
     );
 }
