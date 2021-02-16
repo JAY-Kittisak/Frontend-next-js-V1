@@ -34,3 +34,15 @@ export interface FactoryProduct {
   createdAt: string
   user: User
 }
+// new Tier
+export interface Tier {
+  id: string;
+  industrialEstate: string;
+  businessType: string;
+  companyName: string;
+  description: string;
+  address: string;
+  phoneNumber: string;
+  FAX: string;
+  Email: string;
+}

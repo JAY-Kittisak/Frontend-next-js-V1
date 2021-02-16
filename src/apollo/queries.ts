@@ -48,3 +48,18 @@ export const QUERY_FACTORIES = gql`
         }
     }
 `;
+export const QUERY_TIERS = gql`
+    query {
+        Tiers {
+            id
+            industrialEstate
+            businessType
+            companyName
+            description
+            address
+            phoneNumber
+            FAX
+            Email
+        }
+    }
+`;
