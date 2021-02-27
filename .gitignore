@@ -5,6 +5,10 @@
 /.pnp
 .pnp.js
 
+# เพิ่มเอง
+.env
+.next
+
 
 # testing
 /coverage
