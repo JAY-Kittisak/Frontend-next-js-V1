@@ -10,7 +10,7 @@ export interface User {
 
 export type SignupArgs = Pick<User, 'username' | 'email'> & { password: string }
 
-export type SigninArgs = Omit<SignupArgs, 'username'>
+export type SigninArgs = Omit<SignupArgs, 'email'>;
 
 
 // Tire

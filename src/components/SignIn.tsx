@@ -33,9 +33,9 @@ const SignIn: React.FC<Props> = () => {
 
     const [signin, { loading, error }] = useMutation<{ signin: User }, SigninArgs>(SIGN_IN);
 
-    const handleSignin = handleSubmit(async ({ email, password }) => {
+    const handleSignin = handleSubmit(async ({ username, password }) => {
         try {
-            const response = await signin({ variables: { email, password } });
+            const response = await signin({ variables: { username, password } });
 
             if (response?.data?.signin) {
                 const user = response.data.signin;
@@ -84,27 +84,27 @@ const SignIn: React.FC<Props> = () => {
                 <Divider />
 
                 <StyledForm onSubmit={handleSignin}>
-                    <p className="email_section_label">or sign in with an email</p>
+                    <p className="username_section_label">or sign in with an username</p>
 
                     <InputContainer>
-                        <label>Email</label>
+                        <label>Username</label>
 
                         <Input
                             type="text"
-                            name="email"
-                            id="email"
-                            placeholder="Your email"
+                            name="username"
+                            id="username"
+                            placeholder="Your Username"
                             autoComplete="new-password"
                             ref={register({
-                                required: 'Email is required.'
+                                required: 'Username is required.'
                                 // pattern: {
                                 //   value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                                //   message: 'Email is in wrong format.',
+                                //   message: 'Username is in wrong format.',
                                 // },
                             })}
                         />
 
-                        <ErrorMessage errors={errors} name="email">
+                        <ErrorMessage errors={errors} name="username">
                             {({ message }) => <StyledError>{message}</StyledError>}
                         </ErrorMessage>
                     </InputContainer>
