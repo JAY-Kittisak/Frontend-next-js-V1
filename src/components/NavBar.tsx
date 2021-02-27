@@ -157,11 +157,6 @@ const NavBar: React.FC<Props> = () => {
                             </a>
                         </Link>
                     )}
-                    {loggedInUser && (
-                        <Link href="/tier">
-                            <a className={router.pathname === '/tier' ? 'active' : ''}>Tier</a>
-                        </Link>
-                    )}
                     {/* ต้อง logged และ เป็น Admin ถึงจะ Show '/admin' */}
                     {loggedInUser && isAdmin(loggedInUser) && (
                         <Link href="/admin">
