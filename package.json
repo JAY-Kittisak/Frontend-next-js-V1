@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "deploy": "git add . && git commit -m 'Heroku' && git push"
   },
   "dependencies": {
     "@apollo/client": "^3.0.2",
@@ -32,5 +33,9 @@
     "@types/styled-components": "^5.1.0",
     "babel-plugin-styled-components": "^1.10.7",
     "typescript": "^3.8.3"
+  },
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.6"
   }
 }
