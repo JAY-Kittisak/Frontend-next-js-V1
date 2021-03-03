@@ -24,5 +24,5 @@ export const client = new ApolloClient({
             }
         }
     }),
-    credentials: 'same-origin'
+    credentials: 'include'
 });
