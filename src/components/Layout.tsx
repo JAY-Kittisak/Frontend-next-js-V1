@@ -12,8 +12,6 @@ import { AuthContext } from '../context/AuthContextProvider'
 import Backdrop from './modal/Backdrop'
 import SignUp from './SignUp'
 import SignIn from './SignIn';
-import RequestResetPassword from './RequestResetPassword'
-import ResetPassword from './ResetPassword'
 
 config.autoAddCss = false
 
@@ -122,18 +120,6 @@ const Layout: React.FC<Props> = ({ children }) => {
                                       <>
                                           <Backdrop />
                                           <SignIn />
-                                      </>
-                                  )}
-                                  {authAction === 'request' && (
-                                      <>
-                                          <Backdrop />
-                                          <RequestResetPassword />
-                                      </>
-                                  )}
-                                  {authAction === 'reset' && (
-                                      <>
-                                          <Backdrop />
-                                          <ResetPassword token={query?.resetToken as string} />
                                       </>
                                   )}
                               </>
